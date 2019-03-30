@@ -7,6 +7,7 @@
     <title>Document</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app1.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
         <div id="app">
@@ -64,7 +65,7 @@
                     app
                   >
                     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-                    <v-icon class="mx-3">fa-youtube</v-icon>
+                    <v-icon class="mx-3">fab fa-youtube</v-icon> <v-icon>fas fa-paper-plane</v-icon>
                     <v-toolbar-title class="mr-5 align-center">
                       <span class="title">Youtube</span>
                     </v-toolbar-title>
