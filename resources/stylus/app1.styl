@@ -1,3 +1,12 @@
 @import '~vuetify/src/stylus/main'
 @require '~vuetify/src/stylus/settings/_colors'
 
+.fadecaro
+    &-enter-active, &-leave-active, &-leave-to
+        transition: .2s ease-out
+        position: absolute
+        top: 0
+        left: 0
+
+      &-enter, &-leave, &-leave-to
+        opacity: 0

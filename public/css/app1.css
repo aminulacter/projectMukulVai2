@@ -10569,3 +10569,16 @@ table.v-table tfoot tr td {
   -webkit-transform: translateY(100%);
           transform: translateY(100%);
 }
+.fadecaro-enter-active,
+.fadecaro-leave-active,
+.fadecaro-leave-to {
+  transition: 0.2s ease-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.fadecaro-enter,
+.fadecaro-leave,
+.fadecaro-leave-to {
+  opacity: 0;
+}

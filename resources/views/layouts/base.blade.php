@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hospital</title>
+     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app1.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <style>
-    [v-cloak]{
-        display: none;
-    }
+   [v-cloak] > * { display:none }
+   [v-cloak]::before { content: "loading…" }
     .iconmenu{
-        padding-top: 20px;
+        padding-top: 0px;
     }
     .topmenubtn{
         background-color: white;
@@ -34,6 +34,10 @@
     a{
         text-decoration: none;
     }
+    .carosalbot
+    {
+        margin-bottom: 80px;
+    }
 </style>
 <body>
   <div id="app" v-cloak>
@@ -51,7 +55,7 @@
                                                                     <v-img  src="{{ asset('img/logo11.png') }}"  height="100" width="100"></v-img>
                                                             </v-flex>
                                                             <v-flex md-9>
-                                                                  <a href="/">  <span class="font-weight-medium title">Doctors'<span class="red--text">Point</span></span></a>
+                                                                  <a href="/">  <span class="font-weight-medium title">Doctors'</span><span class="font-weight-medium title red--text">Point</span></a>
                                                             </v-flex>
                                                                 
                                                         </v-layout></v-flex>
@@ -100,12 +104,11 @@
                                 </v-flex>
                             </v-layout>
                        </v-container>
-                
+              
             <v-toolbar dark color="primary">
-                <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
-                <v-toolbar-title>Doctors' Point</v-toolbar-title>
-                    
-               
+                <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer"></v-toolbar-side-icon>
+                <v-toolbar-title><v-icon>home</v-icon><span class="hidden-sm-and-down">Doctors' Point</span></v-toolbar-title>
+                         
                 <v-spacer></v-spacer>
                 <v-toolbar-items class="hidden-sm-and-down">
                     <v-btn flat href="/">Link One</v-btn>
@@ -118,12 +121,26 @@
                 <v-toolbar-items class="menuRound">
                     <v-btn   small round color="orange darken-3" dark >Appointment</v-btn>                    
                 </v-toolbar-items>
-            </v-toolbar>
-                
+               </v-toolbar>
+            <v-navigation-drawer  v-model="drawer" app class="indigo" disable-resize-watcher>
+               <v-list>
+                   <v-list-tile v-for="link in links" :key="link.text">
+                       <v-list-tile-action>
+                           <v-icon color="white">@{{link.icon}}</v-icon>
+                       </v-list-tile-action>
+                       <v-list-tile-content>
+                           <a :href="link.route"> <v-list-tile-title class="white--text">
+                              @{{link.text}}
+                           </v-list-tile-title></a>
+                       </v-list-tile-content>
+                   </v-list-tile>
+               </v-list>
+            </v-navigation-drawer>
+                       
           
-           <v-container>
+         
                 @yield('content')
-          </v-container>
+         
        </v-content>
     </v-app>
   </div>
